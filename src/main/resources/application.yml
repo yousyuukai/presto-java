@@ -1,0 +1,37 @@
+server:
+  port: 8888
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    session:
+      timeout: 30m
+spring:
+  application:
+    name: springboot-presto
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.17.1.21:3307/rawdata
+    username: root
+    password: 111111
+    hikari:
+      idle-timeout: 30000
+      maximum-pool-size: 30
+      minimum-idle: 10
+  jpa:
+    database: mysql
+    show-sql: true
+  security:
+    user:
+      password: master
+swagger:
+  enabled: true
+  base-path: /**
+presto:
+  datasource:
+    name: presto
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    driver-class-name: com.facebook.presto.jdbc.PrestoDriver
+    jdbc-url: jdbc:presto://172.17.1.21:8080/hive/default
+    username: root
+logging:
+  config: classpath:logback-spring.xml
